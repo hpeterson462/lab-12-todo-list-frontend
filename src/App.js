@@ -1,26 +1,70 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react'
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Link,
+} from 'react-router-dom';
+import AuthPage from './AuthPage.js';
+import TodoListPage from './TodoListPage.js';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+export default class App extends Component {
+  state = { token: localStorage.getItem('token') }
 
-export default App;
+  handleTokenChange = (token) => {
+    this.setState({ token: token });
+    localStorage.setItem('token', token);
+  }
+
+  clearToken = () => {
+    this.setState({ token: '' })
+
+    localStorage.setItem('token', '')
+  }
+
+  render() {
+    return (
+      <div className='App'>
+        <header className='App-header'>
+          <Router>
+            <main>
+              <section>
+                {
+                  this.state.token &&
+                  <div>
+                    <Link to='/signin'><div>Sign In</div>
+                      <button onClick={this.clearToken}>
+                        Logout
+                      </button>
+                    </Link>
+                    <Link to="/signup"><div>Sign Up</div></Link>
+                  </div>
+                }
+              </section>
+              <section className='content'>
+                <Switch>
+                  <Route
+                    exact
+                    path='/'
+                    render={(routerProps) => <TodoListPage
+                      token={this.state.token}
+                      {...routerProps} />}
+                  />
+                  <Route
+                    exact
+                    path='/signin'
+                    render={(routerProps) => <AuthPage
+                      handleTokenChange={this.handleTokenChange}
+                      token={this.state.token}
+                      {...routerProps} />}
+                  />
+                </Switch>
+              </section>
+            </main>
+          </Router>
+        </header>
+      </div >
+    )
+  }
+}
