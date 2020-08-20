@@ -29,7 +29,7 @@ export default class App extends Component {
         <header className='App-header'>
           <Router>
             <main>
-              <section>
+              <section className='sidebar'>
                 {
                   this.state.token &&
                   <div>

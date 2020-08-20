@@ -36,3 +36,10 @@ export function createTodo(todoData) {
     return request.post(`${URL}/api/todos`, todoData)
         .set('Authorization', token);
 }
+
+export function deleteTodo(id) {
+    const token = localStorage.getItem('token');
+
+    return request.delete(`${URL}/api/todos/${id}`)
+        .set('Authorization', token);
+}

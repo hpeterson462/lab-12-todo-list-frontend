@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
-import { fetchTodos, createTodo } from './todos-api.js';
+import {
+    fetchTodos,
+    createTodo,
+    deleteTodo
+} from './todos-api.js';
 import { Link } from 'react-router-dom';
 
 export default class TodoListPage extends Component {
@@ -45,6 +49,9 @@ export default class TodoListPage extends Component {
         this.setState({ name: e.target.value });
     }
 
+    handleDelete = async () => {
+        await deleteTodo(this.props.match.params.id);
+    }
 
     render() {
         return (
@@ -61,7 +68,7 @@ export default class TodoListPage extends Component {
                 <div className='todos'>
                     {
                         this.state.todos.map((todo) => {
-                            return <Link className='todo' key={todo.name}>
+                            return <Link to={`/`} className='todo' key={todo.id} onClick={this.handleDelete}>
                                 <p>{todo.name}</p>
                             </Link>
                         })

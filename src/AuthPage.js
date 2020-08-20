@@ -35,7 +35,7 @@ export default class AuthPage extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.handleSignIn}>
+                <form onSubmit={this.handleSignIn} className='form-signin'>
                     Sign In
                 <label>
                         Email
@@ -47,7 +47,7 @@ export default class AuthPage extends Component {
                     </label>
                     <button>Submit</button>
                 </form>
-                <form onSubmit={this.handleSignUp}>
+                <form onSubmit={this.handleSignUp} className='form-signup'>
                     Sign Up
                 <label>
                         Email
