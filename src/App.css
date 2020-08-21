@@ -2,15 +2,15 @@
   text-align: center;
   padding: 0;
   margin: 0;
+  font-family: 'Architects Daughter', cursive;
+  letter-spacing: 0.5em;
 
-  --color1: #451331;
-  --color2: #053d45;
-  --color3: #468499;
-  --color4: #f5c050;
+  --color1: #468499;
+  --color2: #f5c050;
 }
 
 .App-header {
-  background-color: #282c34;
+  background-image: linear-gradient(#f5c050, #468499);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -49,17 +49,20 @@ label {
 
 button{
   border-radius: 20px;
-  background-color: bisque;
+  background-color: white;
+  font-family: 'Architects Daughter', cursive;
+  letter-spacing: 0.3em;
 }
 
 button:hover{
-  background-color: cadetblue;
+  background-color: var(--color1);
   cursor: pointer;
 }
 
-todo{
-  align-items: center;
-  
+h2{
+  font-weight: bold;
+  font-size: 2em;
+  text-decoration: underline;
 }
 
 .todos{
@@ -70,12 +73,10 @@ todo{
 }
 
 p{
-  border: dotted 1px goldenrod;
-  padding: 40px;
+  padding: 20px;
   margin: 5px;
   width: 100px;
   height: 50%;
-  border-radius: 10px;
 }
 
 p:clicked {
@@ -84,6 +85,12 @@ p:clicked {
 
 a{
   text-decoration: none;
+  color: white;
+  line-height: 2em;
+}
+
+.sidebar{
+  background-image: linear-gradient(#f5c050, white);
 }
 
 @media (max-width: 700px){
@@ -92,4 +99,10 @@ a{
     display: grid;
     grid-template-columns: 1fr;
   }
+
+  .App-header {
+    background-image: linear-gradient(#468499, white, #468499);
+  }
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');

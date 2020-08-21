@@ -34,11 +34,11 @@ export default class App extends Component {
                   this.state.token &&
                   <div>
                     <Link to='/signin'><div>Sign In</div>
-                      <button onClick={this.clearToken}>
-                        Logout
-                      </button>
                     </Link>
                     <Link to="/signup"><div>Sign Up</div></Link>
+                    <button onClick={this.clearToken}>
+                      Logout
+                      </button>
                   </div>
                 }
               </section>
